@@ -12,7 +12,9 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("Hej Crippa!");
             Console.Beep();
+            Console.WriteLine("Hej Joxx!");
             Console.ReadLine();
+            
         }
     }
 }
