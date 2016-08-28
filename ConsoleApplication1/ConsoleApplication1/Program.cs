@@ -12,6 +12,7 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("Hej Crippa!");
             Console.Beep();
+            Console.SetWindowPosition(50,50);
             Console.ReadLine();
         }
     }
