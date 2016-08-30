@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace ConsoleApplication1
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Hej Crippa!");
-            Console.Beep();
             Console.WriteLine("Hej Joxx!");
             Console.ReadLine();
-            
         }
     }
 }
