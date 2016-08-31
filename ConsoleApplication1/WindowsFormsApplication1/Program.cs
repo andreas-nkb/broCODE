@@ -27,7 +27,10 @@ namespace WindowsFormsApplication1
                 string P = form1.GetPath();
                 Console.WriteLine(P);
                 var mediaList= DirSearch(P);
-                Console.WriteLine(mediaList.Count());
+                foreach (string f in mediaList)
+                {
+                    Console.WriteLine(f);
+                }
             }
             else
             {
