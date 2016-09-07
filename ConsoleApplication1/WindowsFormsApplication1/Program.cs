@@ -15,7 +15,12 @@ namespace WindowsFormsApplication1
 
 
         private static readonly Regex rx = new Regex
-        (@"(.*?)\.S?(\d{1,2})E?(\d{2})\.(.*)", RegexOptions.IgnoreCase);
+        (@"(.*?)(:?- |- S| S|.S)(\d{1,2})(:?X|E)(\d{2})(:?.| )(.*)", RegexOptions.IgnoreCase);
+
+        /** Rexex för naruo/alchemist osv   
+         * @"(.*?)\.\s?(\d{1,2})X?(\d{,2})\.\s(.*)
+         @"(.*?)\.S?(\d{1,2})E?(\d{2})\.(.*)"
+             */
 
         public static HashSet<string> seriesList = new HashSet<string>();
         public static TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
@@ -94,10 +99,8 @@ namespace WindowsFormsApplication1
 
             MatchCollection matches = rx.Matches(text);
             foreach (Match match in matches)
-            {   
-                if (textInfo.ToTitleCase(match.Groups[1].ToString().Trim()).Contains("S0") == true )
-                    return;
-                else
+            {
+                Console.WriteLine(match.Groups[1] + " | " + match.Groups[3] + " | " + match.Groups[5] + " | " + match.Groups[7]);
                 seriesList.Add(textInfo.ToTitleCase(match.Groups[1].ToString().Trim()));
             }
 
