@@ -26,14 +26,58 @@ namespace WindowsFormsApplication1
                 Path = fbd.SelectedPath;
                 Console.WriteLine(Path);
                 this.DialogResult = DialogResult.OK;
-                
+                pathBox.Text = fbd.SelectedPath;
+
+                SortBtn.Enabled = true;
+                IdentifyBtn.Enabled = true;
+                RenameBtn.Enabled = true;
             }
-            this.Close();
         }
 
         public string GetPath()
         {
             return Path;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SortBtn.Enabled = false;
+            IdentifyBtn.Enabled = false;
+            RenameBtn.Enabled = false;
+        }
+
+        private void pathBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdentifyBtn_Click(object sender, EventArgs e)
+        {
+            SortBtn.Enabled = false;
+            RenameBtn.Enabled = false;
+
+            List<string> filesFound = Searcher.DirSearch(Path);
+            foreach (string f in filesFound)
+            {
+                Searcher.Extract(f);
+            }
+
+            HashSet<string> h = Searcher.GetSet();
+            Console.WriteLine(h.Count);
+
+            SortBtn.Enabled = true;
+            RenameBtn.Enabled = true;
+            Close();
+        }
+
+        private void SortBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RenameBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
