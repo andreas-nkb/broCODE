@@ -31,6 +31,9 @@ namespace WindowsFormsApplication1
                 SortBtn.Enabled = true;
                 IdentifyBtn.Enabled = true;
                 RenameBtn.Enabled = true;
+                string a = "01";
+                Console.WriteLine(Int32.Parse(a));
+
             }
         }
 
@@ -56,11 +59,17 @@ namespace WindowsFormsApplication1
             SortBtn.Enabled = false;
             RenameBtn.Enabled = false;
 
-            List<string> filesFound = Searcher.DirSearch(Path);
-            foreach (string f in filesFound)
+            List <Tuple < string, string>> filesFound = Searcher.DirSearch(Path);
+
+            for (int i = 0; i < filesFound.Count(); i++)
             {
-                Searcher.Extract(f);
+                Console.WriteLine(filesFound[i].Item1);
+                Console.WriteLine(filesFound[i].Item2);
             }
+
+            /**{
+                Searcher.Extract(f);
+            }  */
 
             HashSet<string> h = Searcher.GetSet();
             Console.WriteLine(h.Count);

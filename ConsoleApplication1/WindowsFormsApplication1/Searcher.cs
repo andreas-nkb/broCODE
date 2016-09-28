@@ -25,18 +25,19 @@ namespace WindowsFormsApplication1
             return seriesList;
         }
 
-        public static List<string> DirSearch(string sDir)
+        public static List<Tuple<string, string>> DirSearch(string sDir)
         {
-            List<string> filesFound = new List<string>();
+            var filesFound = new List<Tuple<string, string>>();
             try
             {
                 string[] extensions = { ".mkv", ".mp4", "avi" };
-                foreach (string file in Directory.EnumerateFiles(sDir, "*.*", SearchOption.AllDirectories)
-                    .Select(Path.GetFileName)
+                foreach (string path in Directory.EnumerateFiles(sDir, "*.*", SearchOption.AllDirectories)
                     .Where(s => extensions.Any(ext => ext == Path.GetExtension(s))))
                 {
-                    filesFound.Add(file);
+                    string file = Path.GetFileNameWithoutExtension(path);
+                    filesFound.Add(new Tuple<string, string>(file, path));
                 }
+   
                 Console.WriteLine(filesFound.Count);
                 return filesFound;
             }
