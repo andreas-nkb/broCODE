@@ -71,34 +71,59 @@ namespace WindowsFormsApplication1
                 Console.WriteLine(sb);
                 seriesList.Add(sb.ToString());
             }
-
-            /**
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            foreach (string text in mediaList)
-            {
-                if (text.Contains("sample", StringComparison.OrdinalIgnoreCase) == true)
-                    return;
-
-                MatchCollection matches = rx.Matches(text);
-                foreach (Match match in matches)
-                {
-                   // Console.WriteLine(match.Groups[1] + " | " + match.Groups[3] + " | " + match.Groups[5] + " | " + match.Groups[7]);
-                  //   sb.Append(textInfo.ToTitleCase(match.Groups[1].ToString().Trim()));
-                  //  sb.Replace(".", " ");
-                    seriesList.Add(textInfo.ToTitleCase(match.Groups[1].ToString().Trim()));
-                   // sb.Clear();
-                }
-            }
-            Console.WriteLine(seriesList.Count);
-            foreach (string f in seriesList)
-            {
-                count++;
-                Console.WriteLine(f);
-            }
-            Console.WriteLine(count);
-    */
         }
+
+        public class Season
+        {
+            public string Name { get; set; }
+            public int Number { get; set; }
+            public List<Episode> Episode;
+            public Season(string name, int number)
+            {
+                Name = name;
+                Number = number;
+            }
+            //Other properties, methods, events...
+        }
+
+        public class Episode
+        {
+            public int Number { get; set; }
+            public string FilePath { get; set; }
+            public Episode(int number, string filepath)
+            {
+                Number = number;
+                FilePath = filepath;
+            }
+            //Other properties, methods, events...
+        }
+
+        /**
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        foreach (string text in mediaList)
+        {
+            if (text.Contains("sample", StringComparison.OrdinalIgnoreCase) == true)
+                return;
+
+            MatchCollection matches = rx.Matches(text);
+            foreach (Match match in matches)
+            {
+               // Console.WriteLine(match.Groups[1] + " | " + match.Groups[3] + " | " + match.Groups[5] + " | " + match.Groups[7]);
+              //   sb.Append(textInfo.ToTitleCase(match.Groups[1].ToString().Trim()));
+              //  sb.Replace(".", " ");
+                seriesList.Add(textInfo.ToTitleCase(match.Groups[1].ToString().Trim()));
+               // sb.Clear();
+            }
+        }
+        Console.WriteLine(seriesList.Count);
+        foreach (string f in seriesList)
+        {
+            count++;
+            Console.WriteLine(f);
+        }
+        Console.WriteLine(count);
+*/
 
 
     }
